@@ -57,7 +57,7 @@
         </CSVDataSet>
         <hashTree/>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <intProp name="calcMode">0</intProp>
+          <intProp name="calcMode">3</intProp>
           <stringProp name="throughput">${TPM}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
