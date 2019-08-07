@@ -1,1 +1,2 @@
-Baidu
+www.baidu.com,Baidu
+www.baidu.com,Google
