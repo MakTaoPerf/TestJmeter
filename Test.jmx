@@ -93,6 +93,39 @@
           <stringProp name="filename">reportData\data.csv</stringProp>
         </ResultCollector>
         <hashTree/>
+        <com.expedia.perf.jmeter.parser.ReportCreator guiclass="TestBeanGUI" testclass="com.expedia.perf.jmeter.parser.ReportCreator" testname="HTML Report Creator" enabled="true">
+          <stringProp name="baselineServer"></stringProp>
+          <stringProp name="capacityTestFlag">False</stringProp>
+          <stringProp name="comparison">True</stringProp>
+          <stringProp name="delimiter">_</stringProp>
+          <boolProp name="includeAll">true</boolProp>
+          <boolProp name="includeGraphs">true</boolProp>
+          <doubleProp>
+            <name>maxChange</name>
+            <value>50.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <doubleProp>
+            <name>maxErrorRate</name>
+            <value>0.05</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <intProp name="maxMetricChange">20</intProp>
+          <stringProp name="outFile">report\summary.html</stringProp>
+          <doubleProp>
+            <name>percentile</name>
+            <value>90.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="project"></stringProp>
+          <stringProp name="rampDown">5</stringProp>
+          <stringProp name="rampup">0</stringProp>
+          <stringProp name="scenario"></stringProp>
+          <stringProp name="testServer"></stringProp>
+          <stringProp name="version1">Baidu</stringProp>
+          <stringProp name="version2">Google</stringProp>
+        </com.expedia.perf.jmeter.parser.ReportCreator>
+        <hashTree/>
       </hashTree>
     </hashTree>
   </hashTree>
