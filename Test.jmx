@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="3.1" jmeter="3.1 r1770033">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1 r1853635">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -32,7 +32,18 @@
           <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Baidu_trunk-trunk.ci.2091362" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">WebIP.txt</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">ReleaseName</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${ReleaseName}_trunk-trunk.ci.2091362" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -51,65 +62,8 @@
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
-        <hashTree>
-          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="hashparam" enabled="true">
-            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-            <stringProp name="RegexExtractor.refname">hashparam</stringProp>
-            <stringProp name="RegexExtractor.regex">hashParam=&quot; + &quot;</stringProp>
-            <stringProp name="RegexExtractor.template">$1$</stringProp>
-            <stringProp name="RegexExtractor.default"></stringProp>
-            <stringProp name="RegexExtractor.match_number">0</stringProp>
-            <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
-          </RegexExtractor>
-          <hashTree/>
-          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="randomData" enabled="true">
-            <stringProp name="filename"></stringProp>
-            <stringProp name="parameters"></stringProp>
-            <boolProp name="resetInterpreter">true</boolProp>
-            <stringProp name="script">import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-Random random = new Random();	
-int maxMonths=1;	
-int cutover=20;
-int tripDuration=8;
-Calendar now = Calendar.getInstance();		
-int currentDay = now.get(Calendar.DAY_OF_MONTH);
-int currentMonth = now.get(Calendar.MONTH)+1;
-int currentYear = now.get(Calendar.YEAR);	
-int day = Math.abs(random.nextInt() % 28)+1; 		
-int month = currentMonth + Math.abs(random.nextInt() % maxMonths)+1; 	
-int year = currentYear;
-
-if(month &gt;12){	
-	month = month-12;	
-	year = year+1;	
-}
-if (day &gt; cutover)	
-{
-	day = Math.abs(random.nextInt() % cutover) + 1;
-	if (month&lt;12) 
-	{
-		month = month + 1;
-	}
-	else
-	{
-		month=1;
-		year = year + 1;
-	}
-}
-
-String startdate1 = month+&quot;/&quot;+day+&quot;/&quot;+year;
-int eday = (day+1) + Math.abs(random.nextInt() % tripDuration);
-String enddate1 = month + &quot;/&quot; + eday+&quot;/&quot; + year;
-vars.put(&quot;startdate&quot;,startdate1);
-vars.put(&quot;enddate&quot;,enddate1);
-</stringProp>
-          </BeanShellPreProcessor>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Baidu_trunk-trunk.ci.2091420" enabled="true">
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${ReleaseName}_trunk-trunk.ci.2091420" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -128,17 +82,7 @@ vars.put(&quot;enddate&quot;,enddate1);
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
-        <hashTree>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-            <collectionProp name="Asserion.test_strings">
-              <stringProp name="1424467882">retailHotelInfoModel</stringProp>
-            </collectionProp>
-            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
-          </ResponseAssertion>
-          <hashTree/>
-        </hashTree>
+        <hashTree/>
         <com.expedia.perf.jmeter.parser.ReportCreator guiclass="TestBeanGUI" testclass="com.expedia.perf.jmeter.parser.ReportCreator" testname="HTML Report Creator" enabled="true">
           <stringProp name="baselineServer"></stringProp>
           <stringProp name="comparison">False</stringProp>
