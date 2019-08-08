@@ -56,7 +56,7 @@
           <stringProp name="variableNames">WebIP,ReleaseName</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="false">
           <intProp name="calcMode">3</intProp>
           <stringProp name="throughput">${TPM}</stringProp>
         </ConstantThroughputTimer>
