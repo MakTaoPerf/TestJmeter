@@ -29,6 +29,11 @@
             <stringProp name="Argument.value">${__P(TPM)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="RampUp" elementType="Argument">
+            <stringProp name="Argument.name">RampUp</stringProp>
+            <stringProp name="Argument.value">${__P(RampUp)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -39,7 +44,7 @@
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">${Thread}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${Thread}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -56,7 +61,7 @@
           <stringProp name="variableNames">WebIP,ReleaseName</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="false">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">3</intProp>
           <stringProp name="throughput">${TPM}</stringProp>
         </ConstantThroughputTimer>
@@ -119,37 +124,36 @@
         </ResultCollector>
         <hashTree/>
         <com.expedia.perf.jmeter.parser.ReportCreator guiclass="TestBeanGUI" testclass="com.expedia.perf.jmeter.parser.ReportCreator" testname="HTML Report Creator" enabled="true">
-          <stringProp name="project"></stringProp>
-          <stringProp name="scenario"></stringProp>
-          <stringProp name="rampup">0</stringProp>
-          <stringProp name="rampDown">5</stringProp>
-          <boolProp name="includeAll">true</boolProp>
-          <stringProp name="comparison">False</stringProp>
-          <boolProp name="includeGraphs">true</boolProp>
-          <stringProp name="version1">Baidu</stringProp>
-          <stringProp name="version2">Google</stringProp>
           <stringProp name="baselineServer"></stringProp>
-          <stringProp name="testServer"></stringProp>
+          <stringProp name="capacityTestFlag">False</stringProp>
+          <stringProp name="comparison">True</stringProp>
           <stringProp name="delimiter">_</stringProp>
-          <stringProp name="outFile">SummaryReport\summary.html</stringProp>
+          <boolProp name="includeAll">true</boolProp>
+          <boolProp name="includeGraphs">true</boolProp>
           <doubleProp>
             <name>maxChange</name>
             <value>50.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
-          <intProp name="maxMetricChange">20</intProp>
           <doubleProp>
             <name>maxErrorRate</name>
             <value>0.05</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
-          <stringProp name="capacityTestFlag">True</stringProp>
+          <intProp name="maxMetricChange">20</intProp>
+          <stringProp name="outFile">SummaryReport\summary.html</stringProp>
           <doubleProp>
             <name>percentile</name>
             <value>90.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
-          <stringProp name="extraLinks"></stringProp>
+          <stringProp name="project"></stringProp>
+          <stringProp name="rampDown">5</stringProp>
+          <stringProp name="rampup">0</stringProp>
+          <stringProp name="scenario"></stringProp>
+          <stringProp name="testServer"></stringProp>
+          <stringProp name="version1">Baidu</stringProp>
+          <stringProp name="version2">Google</stringProp>
         </com.expedia.perf.jmeter.parser.ReportCreator>
         <hashTree/>
       </hashTree>
